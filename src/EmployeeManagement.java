@@ -1,5 +1,5 @@
 public class EmployeeManagement {
-    private static int counter = 0;
+    private static int counter = 0;             //Статическая переменная - счетчик, которая отвечает за ID
     public static int getAndIncrement() {
         counter++;
         return counter;
