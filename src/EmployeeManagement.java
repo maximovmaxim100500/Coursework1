@@ -1,9 +1,13 @@
 public class EmployeeManagement {
-    private static int counter = 0;             //Статическая переменная - счетчик, которая отвечает за ID
+                 //Статическая переменная - счетчик, которая отвечает за ID
     public static int getAndIncrement() {
+        int counter = 0;
         counter++;
         return counter;
     }
+
+
+
     private final Employee[] employees;
     private int count;
 
@@ -11,11 +15,10 @@ public class EmployeeManagement {
         this.employees = new Employee[10];
     }
 
-    public void addEmployee(String fullName, int department, int salary) {       //Создание сотрудника
-        if (count > employees.length) {
+    public void addEmployee(Employee newEmployee) {       //Создание сотрудника
+        if (count > employees.length - 1) {
             System.out.println("Нельзя добавить контакт, закончилось место");
         }
-        Employee newEmployee = new Employee(fullName, department, salary);
         employees[count++] = newEmployee;
     }
 
@@ -26,17 +29,18 @@ public class EmployeeManagement {
         }
     }
 
-    int sumSalary;
-    public void printSumSalaryOfMonth() {           //Печатаем затраты на зарплату в месяц
-        sumSalary = 0;
+
+
+    public int getSumSalaryOfMonth() {           //Считаем затраты на зарплату в месяц
+        int sumSalary = 0;
         for (int i = 0; i < count; i++) {
             Employee contact = employees[i];
             sumSalary += contact.getSalary();
         }
-        System.out.println("Сумма затрат на зарплату в месяц составила = " + sumSalary);
+        return sumSalary;
     }
 
-    public void printMinSalary() {           //Печатаем сотрудника с минимальной зарплатой
+    public int getMinSalary() {           //Находим минимальную зарплату
         int minSalary = 10_000_000;
         String minEmployee = " ";
         for (int i = 0; i < count; i++) {
@@ -46,9 +50,10 @@ public class EmployeeManagement {
                 minEmployee = contact.getFullName();
             }
         }
-        System.out.println("Минимальная зарплата " + minSalary + " рублей/месяц у сотрудника " + minEmployee);
+        return minSalary;
     }
-    public void printMaxSalary() {           //Печатаем сотрудника с максимальной зарплатой
+
+    public int getMaxSalary() {           //Находим максимальную зарплату
         int maxSalary = -1;
         String maxEmployee = " ";
         for (int i = 0; i < count; i++) {
@@ -58,13 +63,14 @@ public class EmployeeManagement {
                 maxEmployee = contact.getFullName();
             }
         }
-        System.out.println("Максимальная зарплата " + maxSalary + " рублей/месяц у сотрудника " + maxEmployee);
+        return maxSalary;
     }
-    public void PrintAvarageSalary() {           //Печатаем среднюю зарплату за месяц
-        int avarageSalary = sumSalary/count;
 
-        System.out.println("Средняя зарплата за месяц = " + avarageSalary);
+    public int getAvarageSalary() {           //считаем среднюю зарплату за месяц
+        int avarageSalary = getSumSalaryOfMonth() / count;
+        return avarageSalary;
     }
+
     public void printAllFullNames() {           //Печатаем ФИО всех сотрудников
         System.out.println("Имена всех сотрудников:");
         for (int i = 0; i < count; i++) {
