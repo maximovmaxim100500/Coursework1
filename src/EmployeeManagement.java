@@ -1,11 +1,10 @@
 public class EmployeeManagement {
-                 //Статическая переменная - счетчик, которая отвечает за ID
+    private static int counter = 0;  //Статическая переменная - счетчик, которая отвечает за ID
+
     public static int getAndIncrement() {
-        int counter = 0;
         counter++;
         return counter;
     }
-
 
 
     private final Employee[] employees;
@@ -18,8 +17,9 @@ public class EmployeeManagement {
     public void addEmployee(Employee newEmployee) {       //Создание сотрудника
         if (count > employees.length - 1) {
             System.out.println("Нельзя добавить контакт, закончилось место");
+        } else {
+            employees[count++] = newEmployee;
         }
-        employees[count++] = newEmployee;
     }
 
     public void printAllContacts() {           //Печатаем все свойства всех объектов
@@ -28,7 +28,6 @@ public class EmployeeManagement {
             System.out.println(employees[i]);
         }
     }
-
 
 
     public int getSumSalaryOfMonth() {           //Считаем затраты на зарплату в месяц

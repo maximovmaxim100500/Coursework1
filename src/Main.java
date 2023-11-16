@@ -15,6 +15,7 @@ public class Main {
         employeeManagement.addEmployee(new Employee("Люк Скай Вокер", 3, 79000));
         employeeManagement.addEmployee(new Employee("Хренова Гадя Петрович", 5, 42000));
         employeeManagement.addEmployee(new Employee("Дарт Вэйдэр", 5, 97000));
+        employeeManagement.addEmployee(new Employee("Mr. Pickles", 5, 100_000));
         employeeManagement.printAllContacts();
         System.out.println("======================");
         System.out.println("Затраты на зарплату в месяц = " + employeeManagement.getSumSalaryOfMonth());
